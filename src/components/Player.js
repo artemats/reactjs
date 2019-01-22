@@ -19,10 +19,11 @@ export class Player extends Component{
         this.state = {
             url: 'https://www.youtube.com/watch?v=TJ3Ci4yeQpA',
             playing: false,
-            volume: 20
+            volume: 10
         };
         this.onPlay = this.onPlay.bind(this);
         this.onPause = this.onPause.bind(this);
+        this.onEnded = this.onEnded.bind(this);
         this.changeAudioVolume = this.changeAudioVolume.bind(this);
     }
 
@@ -50,11 +51,26 @@ export class Player extends Component{
 
     }
 
+    onEnded() {
+
+        console.log('ended');
+        this.setState({
+           playing: false
+        });
+
+    }
+
     changeAudioVolume(event, value) {
 
         this.setState({
            volume: value
         });
+
+    }
+
+    onProgress(playedSeconds, loadedSeconds, loaderContext) {
+
+        console.log(playedSeconds, loadedSeconds, loaderContext);
 
     }
 
@@ -125,10 +141,12 @@ export class Player extends Component{
                         volume={this.state.volume / 100}
                         onPlay={this.onPlay}
                         onPause={this.onPause}
+                        onEnded={this.onEnded}
+                        onProgress={this.onProgress}
                         youtubeConfig={{
                             playerVars: {
                                 cc_load_policy: 0,
-                                controls: 0,
+                                controls: 1,
                                 disablekb: 0,
                                 modestbranding: 0,
                                 rel: 0,
