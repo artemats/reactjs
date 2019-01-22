@@ -1,0 +1,72 @@
+body {
+  background-color: darkolivegreen;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: white; }
+
+.loginFormWrap, .defaultFormWrap {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 40px; }
+
+.form-action {
+  padding: 20px 0 0; }
+
+a {
+  color: inherit;
+  text-decoration: none; }
+  a:hover {
+    text-decoration: none;
+    color: inherit; }
+  a.active {
+    color: #C4B7CB; }
+
+.nav-link {
+  margin-right: 10px; }
+
+.log-switcher {
+  position: absolute;
+  right: 0; }
+
+.checkbox-item {
+  padding: 0 !important; }
+
+.completed-theme .todo-title {
+  opacity: .5;
+  text-decoration: line-through; }
+
+.todo-btn-action {
+  width: 40px !important;
+  min-width: 40px !important;
+  height: 40px !important;
+  margin: 0 6px !important; }
+
+.form-container {
+  position: relative; }
+  .form-container input {
+    padding-right: 51px; }
+
+.action-btn {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  position: absolute;
+  top: 25px;
+  right: 0; }
+
+.form-action-btn {
+  opacity: 0;
+  transition: opacity .2s ease;
+  transition-delay: .5s; }
+
+.task-item:hover .form-action-btn {
+  opacity: 1;
+  transition-delay: 0s; }
+
+.profile-container {
+  margin: 30px auto;
+  max-width: 1000px;
+  padding: 40px; }
+
+.profile-divider {
+  margin: 40px 0 !important; }
