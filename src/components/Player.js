@@ -19,11 +19,13 @@ export class Player extends Component{
         this.state = {
             url: 'https://www.youtube.com/watch?v=TJ3Ci4yeQpA',
             playing: false,
-            volume: 10
+            volume: 10,
+            played: 0
         };
         this.onPlay = this.onPlay.bind(this);
         this.onPause = this.onPause.bind(this);
         this.onEnded = this.onEnded.bind(this);
+        this.onProgress = this.onProgress.bind(this);
         this.changeAudioVolume = this.changeAudioVolume.bind(this);
     }
 
@@ -68,9 +70,17 @@ export class Player extends Component{
 
     }
 
-    onProgress(playedSeconds, loadedSeconds, loaderContext) {
+    onProgress(playedSeconds) {
 
-        console.log(playedSeconds, loadedSeconds, loaderContext);
+        this.setState({
+            played: playedSeconds.played * 100
+        })
+
+    }
+
+    onDuration(duration) {
+
+        console.log(duration);
 
     }
 
@@ -127,6 +137,12 @@ export class Player extends Component{
                                 <SkipNextIcon />
                             </IconButton>
                         </div>
+                        <div className="slider-wrap __horizontal-theme">
+                            <Slider
+                                className="slider"
+                                value={this.state.played}
+                            />
+                        </div>
                     </div>
                     <CardMedia
                         className="card-media"
@@ -143,10 +159,11 @@ export class Player extends Component{
                         onPause={this.onPause}
                         onEnded={this.onEnded}
                         onProgress={this.onProgress}
+                        onDuration={this.onDuration}
                         youtubeConfig={{
                             playerVars: {
                                 cc_load_policy: 0,
-                                controls: 1,
+                                controls: 0,
                                 disablekb: 0,
                                 modestbranding: 0,
                                 rel: 0,

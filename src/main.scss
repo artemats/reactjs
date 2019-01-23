@@ -1,3 +1,9 @@
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 body{
     background-color: darkolivegreen;
     font-family: 'Roboto', sans-serif;
@@ -151,4 +157,10 @@ a{
     max-width: 1px;
     position: relative;
     padding: 17px 45px 0 0;
+        &.__horizontal-theme{
+            height: 1px;
+            width: 100%;
+            max-width: 100%;
+            padding: 25px 0;
+        }
 }
