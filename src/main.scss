@@ -19,6 +19,9 @@ body{
 
 .form-action{
     padding: 20px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 a{
@@ -35,6 +38,14 @@ a{
 
 .nav-link{
     margin-right: 10px;
+}
+
+.__link-theme{
+    color: #000;
+    font-weight: 500;
+        &:hover{
+            color: #000000;
+        }
 }
 
 .log-switcher{

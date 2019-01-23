@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from "react-router-dom";
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
@@ -36,10 +37,6 @@ export class Login extends Component {
         user.name = this.state.username;
         user.password = this.state.password;
 
-        localStorage.setItem('userData', JSON.stringify(user));
-
-        console.log(localStorage.getItem('userData'));
-
     }
 
     render() {
@@ -48,7 +45,7 @@ export class Login extends Component {
             <div>
                 <Paper className="loginFormWrap">
                     <Typography variant="h2" gutterBottom>
-                        Login
+                        Sign in
                     </Typography>
                     <form autoComplete="off" onSubmit={this.handleLogin}>
                         <TextField
@@ -70,8 +67,11 @@ export class Login extends Component {
                         />
                         <div className="form-action">
                             <Button variant="contained" color="primary" type="submit">
-                                Submit data
+                                Sign in
                             </Button>
+                            <NavLink to="/register" color="primary" className="nav-link __link-theme">
+                                Sign up
+                            </NavLink>
                         </div>
                     </form>
                 </Paper>

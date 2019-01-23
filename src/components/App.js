@@ -7,6 +7,7 @@ import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 import { Login } from "./Login";
+import { Register } from "./Register";
 import { Home } from "./Home";
 import { Profile } from "./Profile";
 import { Todo } from "./Todo";
@@ -90,9 +91,9 @@ export class App extends Component {
                                     Player
                                 </Typography>
                             </NavLink>
-                            <NavLink to="/login" exact className="nav-link">
+                            <NavLink to="/register" exact className="nav-link">
                                 <Typography variant="h6" color="inherit">
-                                    Login
+                                    Sign
                                 </Typography>
                             </NavLink>
                             <NavLink to="/profile" exact className="nav-link">
@@ -120,6 +121,7 @@ export class App extends Component {
                         <Route excat path="/todo" component={Todo} />
                         <Route excat path="/player" component={PlayerContainer} />
                         <Route exact path="/login" component={Login} />
+                        <Route exact path="/register" component={Register} />
                         <Route exact path="/profile" render={() => (
                             loggedIn ? (<Profile />) : <Redirect to="/login" />
                         )} />
