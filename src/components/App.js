@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, NavLink, Redirect } from "react-router-dom";
+
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
+
 import { Login } from "./Login";
 import { Register } from "./Register";
 import { Home } from "./Home";
 import { Profile } from "./Profile";
 import { Todo } from "./Todo";
 import { PlayerContainer } from "./PlayerContainer";
+import ReduxTemplate from './ReduxTemplate'
 
 export class App extends Component {
 
@@ -101,6 +104,11 @@ export class App extends Component {
                                     Profile
                                 </Typography>
                             </NavLink>
+                            <NavLink to="/redux" exact className="nav-link">
+                                <Typography variant="h6" color="inherit">
+                                    Redux
+                                </Typography>
+                            </NavLink>
                             <div className="log-switcher">
                                 <FormGroup>
                                     <FormControlLabel
@@ -125,6 +133,7 @@ export class App extends Component {
                         <Route exact path="/profile" render={() => (
                             loggedIn ? (<Profile />) : <Redirect to="/login" />
                         )} />
+                        <Route exact path="/redux" component={ReduxTemplate} />
                     </div>
                 </div>
             </BrowserRouter>

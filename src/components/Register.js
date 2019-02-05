@@ -4,19 +4,44 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Switch from '@material-ui/core/Switch';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
 
 export class Register extends Component{
 
     constructor(props) {
         super(props);
         this.state = {
-            username: '',
+            name: '',
+            login: '',
             password: '',
             rPassword: '',
-            email: ''
+            email: '',
+            countries: [],
+            country: '',
+            city: '',
+            phone: ''
         };
         this.handleChangeValue = this.handleChangeValue.bind(this);
+        this.handleChangeStatus = this.handleChangeStatus.bind(this);
         this.onSubmitRegisterData = this.onSubmitRegisterData.bind(this);
+    }
+
+    componentWillMount() {
+
+        fetch('https://restcountries.eu/rest/v2/all')
+            .then(responce => responce.json())
+            .then(responce => {
+                this.setState({
+                    countries: responce
+                });
+            })
+            .catch(error => console.log('wrong in parse - ', error));
+
     }
 
     handleChangeValue(event) {
@@ -27,15 +52,27 @@ export class Register extends Component{
 
     }
 
+    handleChangeStatus(event) {
+
+        this.setState({
+            [event.target.value]: event.target.checked
+        });
+
+    };
+
     onSubmitRegisterData(event) {
 
         let user = {};
 
         event.preventDefault();
 
-        user.username = this.state.username;
+        user.name = this.state.name;
+        user.login = this.state.login;
         user.password = this.state.password;
         user.email = this.state.email;
+        user.country = this.state.country;
+        user.city = this.state.city;
+        user.phone = this.state.phone;
 
         console.log(user);
 
@@ -51,15 +88,23 @@ export class Register extends Component{
                     </Typography>
                     <form autoComplete="off" onSubmit={this.onSubmitRegisterData}>
                         <TextField
-                            label="Username"
-                            name="username"
+                            label="Ім'я"
+                            name="name"
                             margin="normal"
-                            value={this.state.username}
+                            value={this.state.name}
                             onChange={this.handleChangeValue}
                             fullWidth
                         />
                         <TextField
-                            label="Password"
+                            label="Логін"
+                            name="login"
+                            margin="normal"
+                            value={this.state.login}
+                            onChange={this.handleChangeValue}
+                            fullWidth
+                        />
+                        <TextField
+                            label="Пароль"
                             name="password"
                             margin="normal"
                             value={this.state.password}
@@ -68,7 +113,7 @@ export class Register extends Component{
                             type="password"
                         />
                         <TextField
-                            label="Repeat password"
+                            label="Підтвердіть пароль"
                             name="rPassword"
                             margin="normal"
                             value={this.state.rPassword}
@@ -84,6 +129,38 @@ export class Register extends Component{
                             onChange={this.handleChangeValue}
                             fullWidth
                             type="email"
+                        />
+                        <FormControl fullWidth>
+                            <InputLabel htmlFor="age-simple">Країна</InputLabel>
+                            <Select
+                                native
+                                value={this.state.country || ''}
+                                name="country"
+                                onChange={this.handleChangeValue}
+                            >
+                                <option value="" disabled />
+                                { this.state.countries.map((country, key) => {
+                                    return <option key={key} value={country.alpha2Code}>{country.name}</option>
+                                }) }
+                            </Select>
+                        </FormControl>
+                        <TextField
+                            label="Місто"
+                            name="city"
+                            margin="normal"
+                            value={this.state.city}
+                            onChange={this.handleChangeValue}
+                            fullWidth
+                            type="text"
+                        />
+                        <TextField
+                            label="Номер телефону"
+                            name="phone"
+                            margin="normal"
+                            value={this.state.phone}
+                            onChange={this.handleChangeValue}
+                            fullWidth
+                            type="tel"
                         />
                         <div className="form-action">
                             <Button variant="contained" color="primary" type="submit">
