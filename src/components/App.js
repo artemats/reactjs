@@ -8,11 +8,9 @@ import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
 
-import { Login } from "./Login";
-import { Register } from "./Register";
 import { Home } from "./Home";
 import { Profile } from "./Profile";
-import { Todo } from "./Todo";
+import TodoContainer from "./TodoContainer";
 import { PlayerContainer } from "./PlayerContainer";
 import ReduxTemplate from './ReduxTemplate'
 
@@ -39,20 +37,6 @@ export class App extends Component {
             localStorage.setItem('loggedIn', this.state.loggedIn);
 
         }
-
-        console.log('app component will mount');
-
-    }
-
-    componentDidMount() {
-
-        console.log('app component did mount')
-
-    }
-
-    componentWillUpdate(nextProps, nextState) {
-
-        console.log('app component will update');
 
     }
 
@@ -94,11 +78,6 @@ export class App extends Component {
                                     Player
                                 </Typography>
                             </NavLink>
-                            <NavLink to="/register" exact className="nav-link">
-                                <Typography variant="h6" color="inherit">
-                                    Sign
-                                </Typography>
-                            </NavLink>
                             <NavLink to="/profile" exact className="nav-link">
                                 <Typography variant="h6" color="inherit">
                                     Profile
@@ -126,12 +105,10 @@ export class App extends Component {
                     </AppBar>
                     <div>
                         <Route exact path="/" component={Home} />
-                        <Route excat path="/todo" component={Todo} />
+                        <Route excat path="/todo" component={TodoContainer} />
                         <Route excat path="/player" component={PlayerContainer} />
-                        <Route exact path="/login" component={Login} />
-                        <Route exact path="/register" component={Register} />
                         <Route exact path="/profile" render={() => (
-                            loggedIn ? (<Profile />) : <Redirect to="/login" />
+                            loggedIn ? (<Profile />) : <Redirect to="/" />
                         )} />
                         <Route exact path="/redux" component={ReduxTemplate} />
                     </div>

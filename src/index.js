@@ -2,53 +2,23 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { App } from './components/App';
 import './main.scss';
+
+import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import { createStore, combineReducers } from "redux";
+import rootReducer from './store/reducers';
+import { saveState } from "./store/Todo/localStotage";
 
-const initialState = [];
+const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-function playList(state = initialState, action) {
+store.subscribe( () => {
 
-    if(action.type === 'ADD_TRACK') {
+    saveState({
 
-        return {
-            ...state,
-            tracks: [...state.tracks, action.payload]
-        };
+        todoList: store.getState().todoReducer
 
-    }
-
-    return state;
-
-}
-
-const tracksReducer = (state = initialState.tracks, action) => {
-
-    switch (action.type) {
-        case 'ADD_TRACK': {
-            state = [...state, action.payload]
-            break;
-        }
-    }
-
-    return state;
-
-};
-
-const playlistsReducer = (state = initialState.playlists, action) => {
-
-    return state;
-
-};
-
-const reducers = combineReducers({
-
-    tracks: tracksReducer,
-    playlists: playlistsReducer
+    });
 
 });
-
-const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
     <Provider store={store}>
