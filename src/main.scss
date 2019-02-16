@@ -22,6 +22,9 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+        p{
+            color: #000;
+        }
 }
 
 a{
@@ -50,7 +53,7 @@ a{
 
 .log-switcher{
     position: absolute;
-    right: 0;
+    right: 10px;
 }
 
 .defaultFormWrap{
@@ -197,4 +200,13 @@ a{
 
 .card-item{
     padding: 15px;
+}
+
+.center{
+    text-align: center;
+    justify-content: center;
+}
+
+.space-top1{
+    padding-top: 1rem;
 }

@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import { App } from './components/App';
 import './main.scss';
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 import rootReducer from './store/reducers';
 import { saveState } from "./store/Todo/localStotage";
 
-const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 store.subscribe( () => {
 
