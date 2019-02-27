@@ -38,7 +38,7 @@ export class PlayerList extends Component {
 
         return(
             <Card>
-                <List>
+                <List className="playlist">
                     { audioList.map((audioItem, key) => {
                         return <PlayerListItem
                             key={key}

@@ -1,27 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import { loadLocalStorageUserData } from "../localStorage/authenticationStorage";
 
 import Button from '@material-ui/core/Button';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
-
-const defaultState = {
-    login: '',
-    email: '',
-    password: '',
-    loginError: '',
-    emailError: '',
-    passwordError: ''
-};
+import Avatar from '@material-ui/core/Avatar';
+import Chip from '@material-ui/core/Chip';
+import FaceIcon from '@material-ui/icons/Face';
 
 export class SignupForm extends Component {
 
     constructor(props) {
         super(props);
-        this.state = defaultState;
+        this.state = {
+            login: '',
+            email: '',
+            password: '',
+            loginError: '',
+            emailError: '',
+            passwordError: '',
+            haveAccount: false
+        };
 
         this.handleRegistrationUser = this.handleRegistrationUser.bind(this);
         this.handleChangeValue = this.handleChangeValue.bind(this);
@@ -48,9 +51,35 @@ export class SignupForm extends Component {
             user.email = this.state.email;
             user.password = this.state.password;
 
-            this.props.registrationUser(user);
+            if(!loadLocalStorageUserData()) {
 
-            this.setState(defaultState);
+                this.props.setUserData(user);
+                this.props.loginUser(true);
+
+                this.setState({
+                    login: '',
+                    email: '',
+                    password: '',
+                    loginError: '',
+                    emailError: '',
+                    passwordError: ''
+                });
+
+            } else {
+
+                this.setState({
+                    login: '',
+                    email: '',
+                    password: '',
+                    loginError: '',
+                    emailError: '',
+                    passwordError: '',
+                    haveAccount: true
+                });
+
+            }
+
+
 
         }
 
@@ -139,6 +168,17 @@ export class SignupForm extends Component {
                         </Button>
                     </NavLink>
                 </div>
+                <div className={ this.state.haveAccount ? 'center' : 'hidden' }>
+                    <Chip
+                        avatar={
+                            <Avatar>
+                                <FaceIcon />
+                            </Avatar>
+                        }
+                        label="You already have an account! Try sign in"
+                        color="secondary"
+                    />
+                </div>
             </form>
         )
 
@@ -147,5 +187,6 @@ export class SignupForm extends Component {
 }
 
 SignupForm.propTypes = {
-    registrationUser: PropTypes.func
+    setUserData: PropTypes.func,
+    loginUser: PropTypes.func
 };

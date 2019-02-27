@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, NavLink, Redirect } from "react-router-dom";
+import { connect } from 'react-redux';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-import { Home } from "./Home";
-import { Profile } from "./Profile";
+import Home from "./Home";
+import Profile from "./Profile";
 import TodoContainer from "./TodoContainer";
 import { PlayerContainer } from "./PlayerContainer";
 import ReduxTemplate from './ReduxTemplate'
@@ -14,13 +15,15 @@ import SignupContainer from './signup/SignupContainer';
 import SigninContainer from './signin/SigninContainer'
 import UserSwitcher from './UserSwitcher';
 
-export class App extends Component {
+class App extends Component {
 
     constructor(props) {
         super(props);
     }
 
     render() {
+
+        const { isLoggedIn } = this.props.isLoggedIn;
 
         return(
             <BrowserRouter>
@@ -47,17 +50,17 @@ export class App extends Component {
                                     Redux
                                 </Typography>
                             </NavLink>
-                            <UserSwitcher />
+                            { isLoggedIn ? <UserSwitcher /> : null  }
+
                         </Toolbar>
                     </AppBar>
                     <div>
                         <Route exact path="/" component={Home} />
                         <Route excat path="/todo" component={TodoContainer} />
                         <Route excat path="/player" component={PlayerContainer} />
-                        {/*<Route exact path="/profile" render={() => (*/}
-                            {/*loggedIn ? (<Profile />) : <Redirect to="/" />*/}
-                        {/*)} />*/}
-                        <Route exact path="/profile" component={Profile} />
+                        <Route exact path="/profile" render={() => (
+                            isLoggedIn ? (<Profile />) : <Redirect to="/login" />
+                        )} />
                         <Route exact path="/redux" component={ReduxTemplate} />
                         <Route exact path="/registration" component={SignupContainer} />
                         <Route exact path="/login" component={SigninContainer} />
@@ -69,3 +72,13 @@ export class App extends Component {
     }
 
 }
+
+const mapStateToProps = (state) => {
+
+    return {
+        isLoggedIn: state.isLoggedInReducer
+    }
+
+};
+
+export default connect(mapStateToProps)(App);

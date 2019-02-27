@@ -11,10 +11,10 @@ export class PlayerContainer extends Component {
         return(
             <div>
                 <div className="player-container">
-                    <Grid item xs={6}>
+                    <Grid item xs={9}>
                         <PlayerList />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={3}>
                         <Player />
                     </Grid>
                 </div>

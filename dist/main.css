@@ -92,22 +92,32 @@ a {
 
 .card-player, .card-player-video {
   display: flex;
-  width: 540px;
-  margin: 0 auto; }
+  width: 320px;
+  margin: 0 auto;
+  position: relative;
+  flex-direction: column; }
 
 .card-media {
-  width: 40%;
-  max-width: 40%;
-  flex: 1; }
+  width: 100%;
+  max-width: 100%;
+  flex: 1;
+  height: 220px; }
 
 .card-player-content {
   flex: 1;
-  max-width: 60%;
-  width: 60%; }
+  max-width: 100%;
+  width: 100%;
+  position: relative; }
 
 .player-container {
   display: flex;
   padding: 40px 0 20px; }
+
+.card-player-video {
+  height: 200px; }
+  .card-player-video > div {
+    width: 100% !important;
+    height: 100% !important; }
 
 .player-song-title {
   display: -webkit-box !important;
@@ -158,3 +168,9 @@ a {
 
 .space-top1 {
   padding-top: 1rem; }
+
+.hidden {
+  display: none; }
+
+.playlist-item:last-child hr {
+  display: none; }

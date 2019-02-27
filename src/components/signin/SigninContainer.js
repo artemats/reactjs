@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { SigninForm } from "./SigninForm";
+import { loginUser } from "../../store/SignIn/actions";
 
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -13,7 +15,7 @@ class SigninContainer extends Component {
                 <Typography variant="h2" gutterBottom>
                     Sign in
                 </Typography>
-                <SigninForm />
+                <SigninForm loginUser={this.props.loginUser} history={this.props.history} />
             </Paper>
         );
 
@@ -21,4 +23,16 @@ class SigninContainer extends Component {
 
 }
 
-export default SigninContainer;
+const mapStateToProps = (state) => {
+
+  return {};
+
+};
+
+const mapDispatchToProps = {
+
+    loginUser: loginUser
+
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SigninContainer);

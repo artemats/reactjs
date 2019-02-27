@@ -20,7 +20,8 @@ export class Player extends Component{
             url: 'https://www.youtube.com/watch?v=TJ3Ci4yeQpA',
             playing: false,
             volume: 10,
-            played: 0
+            played: 0,
+            progress: 0
         };
         this.onPlay = this.onPlay.bind(this);
         this.onPause = this.onPause.bind(this);
@@ -28,14 +29,6 @@ export class Player extends Component{
         this.onProgress = this.onProgress.bind(this);
         this.changeAudioVolume = this.changeAudioVolume.bind(this);
     }
-
-    // playPauseAudio() {
-    //
-    //     this.setState({
-    //         playing: !this.state.playing
-    //     });
-    //
-    // };
 
     onPlay() {
 
@@ -74,7 +67,7 @@ export class Player extends Component{
 
         this.setState({
             played: playedSeconds.played * 100
-        })
+        });
 
     }
 
@@ -101,6 +94,11 @@ export class Player extends Component{
         return(
             <div>
                 <Card className="card-player">
+                    <CardMedia
+                        className="card-media"
+                        image="https://yt3.ggpht.com/a-/AAuE7mCpsyeSYSze43LKTwa3mU0cV_xOkidKgtHm=s288-mo-c-c0xffffffff-rj-k-no"
+                        title="Без неї ніяк (Прем'єра 2016) Український хіт 2016"
+                    />
                     <div className="card-player-content">
                         <div className="card-player-header">
                             <CardContent>
@@ -144,11 +142,6 @@ export class Player extends Component{
                             />
                         </div>
                     </div>
-                    <CardMedia
-                        className="card-media"
-                        image="https://yt3.ggpht.com/a-/AAuE7mCpsyeSYSze43LKTwa3mU0cV_xOkidKgtHm=s288-mo-c-c0xffffffff-rj-k-no"
-                        title="Без неї ніяк (Прем'єра 2016) Український хіт 2016"
-                    />
                 </Card>
                 <div className="card-player-video">
                     <ReactPlayer

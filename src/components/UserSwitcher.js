@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import IconButton from '@material-ui/core/IconButton';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
+import { loginUser } from "../store/SignIn/actions";
 
 class UserSwitcher extends Component {
 
@@ -18,6 +20,7 @@ class UserSwitcher extends Component {
 
         this.handleClose = this.handleClose.bind(this);
         this.handleMenu = this.handleMenu.bind(this);
+        this.handleSignOut = this.handleSignOut.bind(this);
 
     }
 
@@ -29,10 +32,20 @@ class UserSwitcher extends Component {
         this.setState({ anchorEl: null });
     };
 
-   render() {
 
-       const { auth, anchorEl } = this.state;
-       const open = Boolean(anchorEl);
+    handleSignOut() {
+
+        this.props.loginUser(false);
+
+        this.handleClose();
+
+    }
+
+
+    render() {
+
+        const { auth, anchorEl } = this.state;
+        const open = Boolean(anchorEl);
 
        return (
            <div className="log-switcher">
@@ -63,13 +76,25 @@ class UserSwitcher extends Component {
                            Profile
                        </NavLink>
                    </MenuItem>
-                   <MenuItem onClick={this.handleClose}>Sign out</MenuItem>
+                   <MenuItem onClick={this.handleSignOut}>Sign out</MenuItem>
                </Menu>
            </div>
        )
 
-   }
+    }
 
 }
 
-export default UserSwitcher;
+const mapStateToProps = (state) => {
+
+    return {};
+
+};
+
+const mapDispatchToProps = {
+
+    loginUser: loginUser
+
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserSwitcher);

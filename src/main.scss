@@ -125,20 +125,24 @@ a{
 
 .card-player{
     display: flex;
-    width: 540px;
+    width: 320px;
     margin: 0 auto;
+    position: relative;
+    flex-direction: column;
 }
 
 .card-media{
-    width: 40%;
-    max-width: 40%;
+    width: 100%;
+    max-width: 100%;
     flex: 1;
+    height: 220px;
 }
 
 .card-player-content{
     flex: 1;
-    max-width: 60%;
-    width: 60%;
+    max-width: 100%;
+    width: 100%;
+    position: relative;
 }
 
 .player-container{
@@ -148,6 +152,11 @@ a{
 
 .card-player-video{
     @extend .card-player;
+    height: 200px;
+        & > div{
+            width: 100% !important;
+            height: 100% !important;
+        }
 }
 
 .player-song-title{
@@ -209,4 +218,16 @@ a{
 
 .space-top1{
     padding-top: 1rem;
+}
+
+.hidden{
+    display: none;
+}
+
+.playlist-item{
+        &:last-child{
+            hr{
+                display: none;
+            }
+        }
 }

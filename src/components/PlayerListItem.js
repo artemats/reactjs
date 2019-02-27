@@ -17,7 +17,7 @@ export class PlayerListItem extends Component {
         const { audioItem } = this.props;
 
         return(
-            <div>
+            <div className="playlist-item">
                 <ListItem alignItems="flex-start" button={true}>
                     <ListItemAvatar>
                         <Avatar alt="Remy Sharp" src={audioItem.songPreview} />

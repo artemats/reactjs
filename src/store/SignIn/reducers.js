@@ -1,15 +1,19 @@
 import { LOGIN_USER } from "./actions";
+import { getLoggedInFromLocalStorage } from "../../components/localStorage/authenticationStorage";
 
-const defaultState = {};
+const defaultState = { isLoggedIn: getLoggedInFromLocalStorage() ? true : false };
 
-export const signInReducer = (state = defaultState, action) => {
+export const isLoggedInReducer = (state = defaultState, action) => {
 
     switch (action.type) {
 
         case LOGIN_USER:
 
-            console.log(action.payload);
+            return {
 
+                ...state, isLoggedIn: action.payload
+
+                };
 
     }
 

@@ -4,7 +4,8 @@ import { SignupForm } from "./SignupForm";
 
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import { registrationUser } from "../../store/SignUp/actions";
+import { setUserData } from "../../store/UserData/actions";
+import { loginUser } from "../../store/SignIn/actions";
 
 class SignupContainer extends Component {
 
@@ -19,7 +20,7 @@ class SignupContainer extends Component {
                 <Typography variant="h2" gutterBottom>
                     Sign up
                 </Typography>
-                <SignupForm registrationUser={this.props.registrationUser} />
+                <SignupForm setUserData={this.props.setUserData} loginUser={this.props.loginUser} />
             </Paper>
         );
 
@@ -29,15 +30,14 @@ class SignupContainer extends Component {
 
 const mapStateToProps = (state) => {
 
-    return {
-        test: 1
-    }
+    return {};
 
 };
 
 const mapDispatchToProps = {
 
-    registrationUser: registrationUser
+    setUserData: setUserData,
+    loginUser: loginUser
 
 };
 
