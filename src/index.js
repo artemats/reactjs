@@ -12,6 +12,7 @@ import { saveState } from "./store/Todo/localStotage";
 import { saveToLocalStorageUserData } from "./components/localStorage/authenticationStorage";
 import { enCode } from "./components/JWTToken/enCode";
 import { setLoggedInToLocalStorage } from "./components/localStorage/authenticationStorage";
+import { savePlayListToLocalStorage } from "./store/PlayList/localStorage";
 
 const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
 
@@ -26,6 +27,8 @@ store.subscribe( () => {
     saveToLocalStorageUserData(enCode(store.getState().userDataReducer));
 
     setLoggedInToLocalStorage(store.getState().isLoggedInReducer.isLoggedIn);
+
+    savePlayListToLocalStorage(store.getState().playListReducer);
 
 });
 

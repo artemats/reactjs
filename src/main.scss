@@ -146,8 +146,7 @@ a{
 }
 
 .player-container{
-    display: flex;
-    padding: 40px 0 20px;
+    padding: 40px 0 120px;
 }
 
 .card-player-video{
@@ -230,4 +229,56 @@ a{
                 display: none;
             }
         }
+}
+
+.add-new-track-form{
+    display: flex;
+}
+
+.add-new-track-form-item{
+    flex: 1;
+}
+
+.player-container-form{
+    padding: 0 0 20px;
+}
+
+.player-container-list{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px;
+}
+
+.player-container-list-item{
+    width: 12.5%;
+    padding: 0 5px;
+}
+
+.track-item{
+    width: 100%;
+}
+
+.track-item-content{
+    padding-bottom: 0 !important;
+}
+
+.track-item-content-title{
+    white-space: nowrap;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.track-item-preview{
+    object-fit: cover;
+}
+
+.__add-track-theme{
+    display: inline-flex;
+    max-width: 120px;
+    align-items: center;
+    justify-content: center;
+}
+
+.rack-item-actions{
+    padding-top: 0 !important;
 }

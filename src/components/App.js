@@ -9,7 +9,7 @@ import Typography from '@material-ui/core/Typography';
 import Home from "./Home";
 import Profile from "./Profile";
 import TodoContainer from "./TodoContainer";
-import { PlayerContainer } from "./PlayerContainer";
+import PlayerContainer from "./player/PlayerContainer";
 import ReduxTemplate from './ReduxTemplate'
 import SignupContainer from './signup/SignupContainer';
 import SigninContainer from './signin/SigninContainer'
