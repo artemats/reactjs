@@ -20,7 +20,7 @@ class SignupContainer extends Component {
                 <Typography variant="h2" gutterBottom>
                     Sign up
                 </Typography>
-                <SignupForm setUserData={this.props.setUserData} loginUser={this.props.loginUser} />
+                <SignupForm setUserData={this.props.setUserData} loginUser={this.props.loginUser} history={this.props.history} />
             </Paper>
         );
 

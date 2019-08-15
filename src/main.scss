@@ -251,11 +251,18 @@ a{
 
 .player-container-list-item{
     width: 12.5%;
-    padding: 0 5px;
+    padding: 0 5px 10px;
 }
 
 .track-item{
     width: 100%;
+        &.active{
+            background-color: #7986cb;
+                .track-item-content-title,
+                button{
+                    color: #ffffff;
+                }
+        }
 }
 
 .track-item-content{
@@ -266,6 +273,7 @@ a{
     white-space: nowrap;
     -ms-text-overflow: ellipsis;
     text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .track-item-preview{
@@ -281,4 +289,81 @@ a{
 
 .rack-item-actions{
     padding-top: 0 !important;
+}
+
+.player-container-wrap{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 8px 8px;
+}
+
+.player-container-wrap-body{
+    height: 80px;
+}
+
+.player-body{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.player-body-video{
+    width: 160px;
+    height: 100%;
+}
+
+.player-body-control{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 0 10px;
+    position: relative;
+}
+
+.player-body-control-text{
+    max-width: 300px;
+}
+
+.player-body-control-progress-wrap{
+    position: absolute;
+    width: 100%;
+    bottom: 7px;
+    left: 0;
+    padding: 0 40px 0 16px;
+}
+
+.player-body-control-btns{
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translate(-50%,0);
+}
+
+.player-body-control-volume{
+    position: absolute;
+    right: 20px;
+    top: 7px;
+    bottom: 7px;
+}
+
+.song-title{
+    white-space: nowrap;
+    max-width: 300px;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+}
+
+.author-title{
+    white-space: nowrap;
+}
+
+.close-player{
+    position: absolute !important;
+    top: 5px;
+    right: 40px;
 }

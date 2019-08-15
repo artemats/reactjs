@@ -55,6 +55,7 @@ export class SignupForm extends Component {
 
                 this.props.setUserData(user);
                 this.props.loginUser(true);
+                this.props.history.push('/profile');
 
                 this.setState({
                     login: '',

@@ -45,11 +45,6 @@ class App extends Component {
                                     Player
                                 </Typography>
                             </NavLink>
-                            <NavLink to="/redux" exact className="nav-link">
-                                <Typography variant="h6" color="inherit">
-                                    Redux
-                                </Typography>
-                            </NavLink>
                             { isLoggedIn ? <UserSwitcher /> : null  }
 
                         </Toolbar>

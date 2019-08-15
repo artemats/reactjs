@@ -1,12 +1,6 @@
-import {SELECT_TRACK} from "./actions";
+import { REMOVE_PLAYING_TRACK, SELECT_TRACK } from "./actions";
 
-const defaulState = {
-    id: '',
-    songTitle: '',
-    authorTitle: '',
-    trackUrl: '',
-    songPreview: ''
-};
+const defaulState = {};
 
 export const playTrackReducer = (state = defaulState, action) => {
 
@@ -23,6 +17,11 @@ export const playTrackReducer = (state = defaulState, action) => {
                 songPreview: action.payload.songPreview
             };
 
+        case REMOVE_PLAYING_TRACK:
+
+            state = action.payload;
+
+            return state
     }
 
     return state;

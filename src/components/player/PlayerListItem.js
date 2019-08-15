@@ -31,11 +31,12 @@ class PlayerListItem extends Component {
 
     render() {
 
-        const { songTitle, authorTitle, songPreview } = this.props.track;
+        const { id, songTitle, authorTitle, songPreview } = this.props.track;
+        const playingTrackId = this.props.playingTrack.id;
 
         return(
             <div className="player-container-list-item">
-                <Card className="track-item">
+                <Card className={`${ playingTrackId === id ? 'active' : ''} track-item`} onClick={this.handleSelectTrack}>
                     <CardActionArea>
                         <CardMedia
                             component="img"

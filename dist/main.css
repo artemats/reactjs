@@ -110,8 +110,7 @@ a {
   position: relative; }
 
 .player-container {
-  display: flex;
-  padding: 40px 0 20px; }
+  padding: 40px 0 120px; }
 
 .card-player-video {
   height: 200px; }
@@ -174,3 +173,115 @@ a {
 
 .playlist-item:last-child hr {
   display: none; }
+
+.add-new-track-form {
+  display: flex; }
+
+.add-new-track-form-item {
+  flex: 1; }
+
+.player-container-form {
+  padding: 0 0 20px; }
+
+.player-container-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -5px; }
+
+.player-container-list-item {
+  width: 12.5%;
+  padding: 0 5px 10px; }
+
+.track-item {
+  width: 100%; }
+  .track-item.active {
+    background-color: #7986cb; }
+    .track-item.active .track-item-content-title,
+    .track-item.active button {
+      color: #ffffff; }
+
+.track-item-content {
+  padding-bottom: 0 !important; }
+
+.track-item-content-title {
+  white-space: nowrap;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden; }
+
+.track-item-preview {
+  object-fit: cover; }
+
+.__add-track-theme {
+  display: inline-flex;
+  max-width: 120px;
+  align-items: center;
+  justify-content: center; }
+
+.rack-item-actions {
+  padding-top: 0 !important; }
+
+.player-container-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 8px 8px; }
+
+.player-container-wrap-body {
+  height: 80px; }
+
+.player-body {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%; }
+
+.player-body-video {
+  width: 160px;
+  height: 100%; }
+
+.player-body-control {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 0 10px;
+  position: relative; }
+
+.player-body-control-text {
+  max-width: 300px; }
+
+.player-body-control-progress-wrap {
+  position: absolute;
+  width: 100%;
+  bottom: 7px;
+  left: 0;
+  padding: 0 40px 0 16px; }
+
+.player-body-control-btns {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+  transform: translate(-50%, 0); }
+
+.player-body-control-volume {
+  position: absolute;
+  right: 20px;
+  top: 7px;
+  bottom: 7px; }
+
+.song-title {
+  white-space: nowrap;
+  max-width: 300px;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis; }
+
+.author-title {
+  white-space: nowrap; }
+
+.close-player {
+  position: absolute !important;
+  top: 5px;
+  right: 40px; }
